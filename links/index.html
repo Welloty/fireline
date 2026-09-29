@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полезные ссылки — Fireline</title>
+    <meta name="description"
+        content="Официальные ресурсы, поддержка разработки и свежая информация по проекту Fireline.">
+    <meta property="og:title" content="Полезные ссылки — Fireline">
+    <meta property="og:description" content="Официальные ресурсы проекта Fireline.">
+    <meta property="og:image" content="https://fireline.dev/fireline.avif">
+    <meta property="og:url" content="https://fireline.dev/links">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Полезные ссылки — Fireline">
+    <meta name="twitter:description" content="Официальные ресурсы проекта Fireline.">
+    <meta name="twitter:image" content="https://fireline.dev/fireline.avif">
+    <link rel="icon" type="image/x-icon" href="../fireline.avif">
+    <link rel="apple-touch-icon" href="../fireline.avif">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark">
+
+    <canvas id="bg-particles"></canvas>
+
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../" class="logo">
+                <img src="../fireline.avif" alt="Fireline logo" class="logo-img"
+                    onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23cc3c2e%22%3E%3Cpath%20d%3D%22M12%202L2%207l10%205%2010-5-10-5zM2%2017l10%205%2010-5M2%2012l10%205%2010-5%22%2F%3E%3C%2Fsvg%3E'">
+                <span>Fireline</span>
+            </a>
+
+            <!-- Десктопное меню -->
+            <nav class="nav-menu">
+
+                <a href="../news/" class="nav-item">
+                    <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                        <path d="M18 14h-8" />
+                        <path d="M15 18h-5" />
+                        <path d="M10 6h8v4h-8V6Z" />
+                    </svg>
+                    <span data-i18n="nav-news">Новости</span>
+                </a>
+                <a href="./" class="nav-item active">
+                    <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    <span data-i18n="nav-links">Полезные ссылки</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Баг-репорт -->
+                <a href="https://t.me/firesitesbugbot?start" target="_blank" rel="noopener noreferrer"
+                    class="bug-report-btn" aria-label="Сообщить о баге">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m8 2 1.88 1.88" />
+                        <path d="M14.12 3.88 16 2" />
+                        <path d="M9 7.13v-1a3 3 0 0 1 6 0v1" />
+                        <path d="M12 20c-4.42 0-8-2.69-8-6V9a4 4 0 0 1 8 0v11Z" />
+                        <path d="M12 9a4 4 0 0 0-8 0v5c0 3.31 3.58 6 8 6" />
+                        <path d="M6 11H3" />
+                        <path d="M6 15H2" />
+                        <path d="M18 11h3" />
+                        <path d="M18 15h2" />
+                        <path d="m19 19-2-1.5" />
+                        <path d="m5 19 2-1.5" />
+                    </svg>
+                    <span data-i18n="bug-report">Сообщить о баге</span>
+                </a>
+
+                <!-- Настройки -->
+                <button id="settings-toggle" class="settings-btn" aria-label="Настройки">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </button>
+
+                <!-- Скачать -->
+                <a href="/#download" class="btn-nav-custom btn-primary-nav download-btn">
+                    <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span data-i18n="download-btn">СКАЧАТЬ</span>
+                </a>
+
+                <!-- Бургер -->
+                <button class="hamburger" id="hamburger" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobile-menu">
+
+            <a href="../news/" class="mobile-nav-item">
+                <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                    <path d="M18 14h-8" />
+                    <path d="M15 18h-5" />
+                    <path d="M10 6h8v4h-8V6Z" />
+                </svg>
+                <span data-i18n="nav-news">Новости</span>
+            </a>
+            <a href="./" class="mobile-nav-item">
+                <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+                <span data-i18n="nav-links">Полезные ссылки</span>
+            </a>
+            <a href="/#download" class="mobile-nav-item btn-mobile-download">
+                <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span data-i18n="download-btn">СКАЧАТЬ</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <header class="hero">
+            <h1 data-i18n="hero-title">Полезные ссылки</h1>
+            <p class="hero-desc" data-i18n="hero-desc">Официальные ресурсы, поддержка разработки и свежая информация по
+                проекту Fireline.</p>
+        </header>
+
+        <main class="links-grid">
+            <a href="../news/" class="link-card news">
+                <div class="link-arrow">↗</div>
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                        <path d="M18 14h-8" />
+                        <path d="M15 18h-5" />
+                        <path d="M10 6h8v4h-8V6Z" />
+                    </svg>
+                </div>
+                <div class="link-title" data-i18n="news-title">Новости</div>
+                <div class="link-desc" data-i18n="news-desc">Актуальные новости, анонсы обновлений и свежая информация о
+                    разработке игры.</div>
+            </a>
+
+            <a href="https://discord.gg/VnctWBxX9R" class="link-card discord" target="_blank">
+                <div class="link-arrow">↗</div>
+                <div class="link-icon">
+                    <svg viewBox="0 0 127.14 96.36">
+                        <path
+                            d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a74.37,74.37,0,0,0,6.72-10.93,68.6,68.6,0,0,1-10.64-5.12c.91-.67,1.81-1.37,2.65-2.1a75.22,75.22,0,0,0,72.86,0c.84.73,1.74,1.43,2.65,2.1a68.86,68.86,0,0,1-10.65,5.12,74.45,74.45,0,0,0,6.71,10.93,105.54,105.54,0,0,0,31.05-18.83C129.55,50.36,123.81,27.56,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,82.69,40.36,94.07,46,94.07,53,89,65.69,82.69,65.69Z" />
+                    </svg>
+                </div>
+                <div class="link-title" data-i18n="discord-title">Сообщество игры (Discord)</div>
+                <div class="link-desc" data-i18n="discord-desc">Живое общение с комьюнити, общение с разработчиком.
+                </div>
+            </a>
+
+            <a href="https://t.me/fireline_2d" class="link-card telegram" target="_blank">
+                <div class="link-arrow">↗</div>
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.37.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+                    </svg>
+                </div>
+                <div class="link-title" data-i18n="telegram-title">Telegram-канал</div>
+                <div class="link-desc" data-i18n="telegram-desc">Быстрые новости, опросы, спойлеры разработки.</div>
+            </a>
+
+            <a href="https://t.me/fireline_chat" class="link-card telegram-chat" target="_blank">
+                <div class="link-arrow">↗</div>
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" />
+                    </svg>
+                </div>
+                <div class="link-title" data-i18n="telegram-chat-title">Сообщество игры (Telegram)</div>
+                <div class="link-desc" data-i18n="telegram-chat-desc">Живое общение с комьюнити, общение с
+                    разработчиком.</div>
+            </a>
+
+            <a href="https://www.youtube.com/@VertexGamesOfficial" class="link-card youtube" target="_blank">
+                <div class="link-arrow">↗</div>
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                </div>
+                <div class="link-title" data-i18n="youtube-title">YouTube-Канал</div>
+                <div class="link-desc" data-i18n="youtube-desc">Официальные видео, демонстрация новых механик в динамике
+                    и обзоры техники.</div>
+            </a>
+
+            <a href="https://boosty.to/vertexgames" class="link-card boosty" target="_blank">
+                <div class="link-arrow">↗</div>
+                <div class="link-icon">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <title>Boosty</title>
+                        <path
+                            d="M2.661 14.337 6.801 0h6.362L11.88 4.444l-.038.077-3.378 11.733h3.15c-1.321 3.289-2.35 5.867-3.086 7.733-5.816-.063-7.442-4.228-6.02-9.155M8.554 24l7.67-11.035h-3.25l2.83-7.073c4.852.508 7.137 4.33 5.791 8.952C20.16 19.81 14.344 24 8.68 24h-.127z" />
+                    </svg>
+                </div>
+                <div class="link-title" data-i18n="boosty-title">Наш Boosty</div>
+                <div class="link-desc" data-i18n="boosty-desc">Поддержите команду Vertexgames и получите возможность
+                    создать собственную наклейку на самолет!</div>
+            </a>
+        </main>
+
+        <div id="settings-modal" class="modal">
+            <div class="modal-content">
+                <button id="modal-close" class="modal-close-btn" aria-label="Закрыть настройки">✕</button>
+                <h2 data-i18n="settings-title">Конфигурация сайта</h2>
+
+                <div class="settings-section">
+                    <h3 data-i18n="lang-title">Язык интерфейса</h3>
+                    <div class="lang-selector">
+                        <button class="lang-opt" data-lang="ru">Русский</button>
+                        <button class="lang-opt" data-lang="ua">Українська</button>
+                        <button class="lang-opt" data-lang="en">English</button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 data-i18n="theme-title">Цветовая схема</h3>
+                    <div class="theme-selector">
+                        <button class="theme-opt" data-theme="dark" data-i18n="theme-dark">Темная</button>
+                        <button class="theme-opt" data-theme="black" data-i18n="theme-black">Черная</button>
+                        <button class="theme-opt" data-theme="light" data-i18n="theme-light">Светлая</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p data-i18n="footer-text">© 2026 vertexgames. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

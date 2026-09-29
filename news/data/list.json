@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "update-1.12",
+    "title": "Глобальное обновление 1.12",
+    "title_en": "Global Update 1.12",
+    "title_ua": "Глобальне оновлення 1.12",
+    "description": "Масштабное обновление: новые самолеты, механики и так далее!",
+    "description_en": "A massive update: new aircraft, mechanics, and more!",
+    "description_ua": "Масштабне оновлення: нові літаки, механіки тощо!",
+    "image": "data/pabr.avif",
+    "date": "2 Июля 2026",
+    "date_en": "July 2, 2026",
+    "date_ua": "2 Липня 2026",
+    "content": "Мы рады представить крупнейшее обновление Fireline — версию 1.12! В этом обновлении вас ждёт множество нововведений: от новых боевых машин до переработки механик и управления.\n\n🆕 Новые механики и контент:\n— Прицельный контейнер: добавлена оптика для точного захвата и автоматического наведения вооружения на наземные цели.\n— Переработка режима «Огненный налет»: в игру добавлены 4 новые ЗРК — «Стрела», «Оса», «Роланд» и Chaparral.\n— Облачные Аккаунты: добавлена система авторизации, позволяющая переносить игровой прогресс между устройствами.\n— Новые УРВП: добавлены управляемые ракеты «воздух-поверхность» AGM-65 Maverick, KH-25ML, KH-29T/L и Brimstone.\n— Ранги: улучшен балансировщик — теперь против вас подбираются соперники на технике аналогичного уровня.\n— Торнадо: добавлен многоцелевой самолёт Panavia Tornado IDS.\n— Новый самолет США: американский штурмовик А-10.\n— Слежение за боеприпасами: слежение за выпущенным боеприпасом \n\n🎇 Визуальные улучшения:\n— Визуальное вооружение: теперь в ангаре наглядно отображаются все установленные на самолете подвесы.\n— Тень самолета: у всех самолетов появилась тень.\n— Наклейки: добавлена возможность кастомизации самолетов уникальными стикерами.\n\n⚙️ Интерфейс и управление:\n— Сохранение техники в ангаре: игра запоминает самолет, на котором вы летали перед выходом, сохраняя его выбранным при следующем входе.\n— Ползунки для управления: управление тягой двигателя и поворотом теперь реализовано с помощью удобных ползунков (можно вернуть кнопки в настройках) \n\n🐓Новые промокоды: \n— Промокод: Welloty\n\nСпасибо всем за активное помощь в нахождении багов! Увидимся в небе!",
+    "content_en": "We are excited to present the largest update to Fireline — version 1.12! In this update, a lot of new features await you: from new combat aircraft to reworked mechanics and controls.\n\n🆕 New Mechanics and Content:\n— Targeting Pod: added optics for precise acquisition and automatic weapon guidance on ground targets.\n— Rework of \"Fire Raid\" mode: 4 new SAM systems added to the game — Strela, Osa, Roland, and Chaparral.\n— Cloud Accounts: added an authorization system that allows transferring game progress between devices.\n— New AGMs: added air-to-surface guided missiles AGM-65 Maverick, KH-25ML, KH-29T/L, and Brimstone.\n— Ranks: improved matchmaking — now you are matched against opponents with similar aircraft tiers.\n— Tornado: added the Panavia Tornado IDS multirole aircraft.\n— New US Aircraft: American A-10 attack aircraft.\n— Munition Tracking: camera tracking for fired munitions.\n\n🎇 Visual Improvements:\n— Visual Weaponry: all weapon pylons mounted on the aircraft are now clearly displayed in the hangar.\n— Aircraft Shadow: all aircraft now have shadows.\n— Decals: added the ability to customize aircraft with unique stickers.\n\n⚙️ Interface and Controls:\n— Hangar Aircraft Saving: the game remembers the aircraft you flew before exiting and keeps it selected upon your next login.\n— Control Sliders: engine throttle and steering controls are now implemented with convenient sliders (buttons can be restored in settings).\n\n🐓 New promo codes:\n— Promo Code: Welloty\n\nThank you all for your active support in finding bugs! See you in the sky!",
+    "content_ua": "Ми раді представити найбільше оновлення Fireline — версію 1.12! У цьому оновленні на вас чекає безліч нововведень: від нових бойових машин до переробки механік та управління.\n\n🆕 Нові механіки та контент:\n— Прицільний контейнер: додано оптику для точного захоплення та автоматичного наведення озброєння на наземні цілі.\n— Переробка режиму «Вогняний налет»: у гру додано 4 нові ЗРК — «Стріла», «Оса», «Роланд» та Chaparral.\n— Хмарні Акаунти: додано систему авторизації, що дозволяє переносити ігровий прогрес між пристроями.\n— Нові КРВП: додано керовані ракети «повітря-поверхня» AGM-65 Maverick, Х-25МЛ, Х-29Т/Л та Brimstone.\n— Ранги: покращено балансувальник — тепер проти вас підбираються суперники на техніці аналогічного рівня.\n— Торнадо: додано багатоцільовий літак Panavia Tornado IDS.\n— Новий літак США: американський штурмовик А-10.\n— Стеження за боєприпасами: відстеження випущеного боєприпасу.\n\n🎇 Візуальні покращення:\n— Візуальне озброєння: тепер в ангарі наочно відображаються всі встановлені на літаку підвіси.\n— Тінь літака: у всіх літаків з'явилася тінь.\n— Наліпки: додано можливість кастомізації літаків унікальними стікерами.\n\n⚙️ Інтерфейс та управління:\n— Збереження техніки в ангарі: гра запам'ятовує літак, на якому ви літали перед виходом, зберігаючи його вибраним при наступному вході.\n— Повзунки для управління: управління тягою двигуна та поворотом тепер реалізовано за допомогою зручних повзунків (можна повернути кнопки в налаштуваннях).\n\n🐓 Нові промокоди:\n— Промокод: Welloty\n\nДякуємо всім за активну допомогу у пошуку багів! Побачимося в небі!"
+  },
+  {
+    "slug": "patch-1.1201",
+    "title": "Патч 1.1201",
+    "title_en": "patch 1.1201",
+    "title_ua": "Патч 1.1201",
+    "description": "Патч с фиксом багов!",
+    "description_en": "A patch containing bug fixes!",
+    "description_ua": "Патч із виправленням багів!",
+    "image": "data/patch_1.1201.avif",
+    "date": "5 Июля 2026",
+    "date_en": "July 5, 2026",
+    "date_ua": "5 Липня 2026",
+    "content": "Встречайте патч 1.1201! Мы исправили ряд ошибок и внесли улучшения на основе ваших отзывов.\n\n🛠 Исправления ошибок:\n— Исправлен баг с прицельным контейнером: при переключении на радар больше не блокируется изменение дальности радара (в том числе при его выключении).\n— Исправлена ошибка с вооружением: при одновременной установке ракет (например, Х-25) и бомб кнопка сброса больше не пропадает после того, как закончатся ракеты.\n— Исправлен баг со стикером: при выборе наклейки «зелёный огурчик» теперь корректно отображается выбранная наклейка, а не аниме-стикер.\n\n⚙️ Изменения и улучшения:\n— Добавлен новый стикер.\n— Добавлено уведомление о том, что совершать покупки нельзя без авторизованного аккаунта.\n— Удалена лишняя кнопка настроек.\n— Дополнены данные о вооружении.\n— Улучшен перевод интерфейса на английский язык.\n— Обновлена версия игры.\n\nСпасибо за ваши отзывы и помощь в нахождении ошибок! Приятной игры!",
+    "content_en": "Meet patch 1.1201! We have fixed several bugs and made improvements based on your feedback.\n\n🛠 Bug Fixes:\n— Fixed a targeting pod issue: switching to radar no longer locks the radar range adjustments (even when the radar is turned off).\n— Fixed a weaponry issue: carrying both missiles (like KH-25) and bombs no longer causes the bomb drop button to disappear after missiles are depleted.\n— Fixed a sticker bug: selecting the \"green pickle\" sticker now correctly displays the chosen decal instead of an anime sticker.\n\n⚙️ Changes & Improvements:\n— Added a new sticker.\n— Added a notification stating that purchases cannot be made without an authorized account.\n— Removed the redundant settings button.\n— Completed the armament details.\n— Improved English translation of the interface.\n— Updated the game version.\n\nThank you for your feedback and support in finding bugs! Enjoy the game!",
+    "content_ua": "Зустрічайте патч 1.1201! Ми виправили низку помилок та внесли покращення на основі ваших відгуків.\n\n🛠 Виправлення помилок:\n— Виправлено баг із прицільним контейнером: при перемиканні на радар більше не блокується зміна дальності радара (зокрема при його вимкненні).\n— Виправлено помилку з озброєнням: при одночасному встановленні ракет (наприклад, Х-25) та бомб кнопка скидання більше не зникає після закінчення ракет.\n— Виправлено баг зі стікером: при виборі наліпки «зелений огірочок» тепер коректно відображається обрана наліпка, а не аніме-стікер.\n\n⚙️ Зміни та покращення:\n— Додано новий стікер.\n— Додано повідомлення про те, що здійснювати покупки не можна без авторизованого акаунта.\n— Вилучено зайву кнопку налаштувань.\n— Доповнено дані про озброєння.\n— Покращено переклад інтерфейсу англійською мовою.\n— Оновлено версію гри.\n\nДякуємо за ваші відгуки та допомогу у пошуку помилок! Приємної гри!"
+  },
+  {
+    "slug": "pk-1.1201",
+    "title": "ПК версия игры",
+    "title_en": "PC Version of the Game",
+    "title_ua": "ПК версія гри",
+    "description": "Версия 1.1201 выходит и для ПК!",
+    "description_en": "Version 1.1201 is coming to PC!",
+    "description_ua": "Версія 1.1201 виходить і для ПК!",
+    "image": "data/pk1.1201.avif",
+    "date": "6 Июля 2026",
+    "date_en": "July 6, 2026",
+    "date_ua": "6 Липня 2026",
+    "content": "Как всегда ПК версия игры для ПК выходит позже чем для телефонов. Это связанно с некоторыми багами, мезаниками и так далее. Обновление уже вышло, вы можете скачать его тут - https://fireline.dev/download",
+    "content_en": "As usual, the PC version of the game releases later than the mobile version. This is due to certain bugs, mechanics, and other issues. The update is already live — you can download it here: https://fireline.dev/download",
+    "content_ua": "Як завжди, ПК версія гри виходить пізніше, ніж для телефонів. Це пов'язано з деякими багами, механіками тощо. Оновлення вже вийшло — ви можете завантажити його тут: https://fireline.dev/download"
+  }
+]

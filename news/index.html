@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости — Fireline</title>
+    <meta name="description" content="Последние новости и обновления игры Fireline — боевой 2D авиасимулятор.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Новости — Fireline">
+    <meta property="og:description" content="Последние новости и обновления игры Fireline.">
+    <meta property="og:image" content="https://fireline.dev/fireline.avif">
+    <meta property="og:url" content="https://fireline.dev/news">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Новости — Fireline">
+    <meta name="twitter:description" content="Последние новости и обновления игры Fireline — боевой 2D авиасимулятор.">
+    <meta name="twitter:image" content="https://fireline.dev/fireline.avif">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../fireline.avif">
+    <link rel="apple-touch-icon" href="../fireline.avif">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark">
+    <div class="bg-glow"></div>
+    <canvas id="radar-particles"></canvas>
+
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../" class="logo">
+                <img src="../fireline.avif" alt="Fireline logo" class="logo-img"
+                    onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23cc3c2e%22%3E%3Cpath%20d%3D%22M12%202L2%207l10%205%2010-5-10-5zM2%2017l10%205%2010-5M2%2012l10%205%2010-5%22%2F%3E%3C%2Fsvg%3E'">
+                <span>Fireline</span>
+            </a>
+
+            <!-- Десктопное меню -->
+            <nav class="nav-menu">
+
+                <a href="./" class="nav-item active">
+                    <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                        <path d="M18 14h-8" />
+                        <path d="M15 18h-5" />
+                        <path d="M10 6h8v4h-8V6Z" />
+                    </svg>
+                    <span data-i18n="nav-news">Новости</span>
+                </a>
+                <a href="../links/" class="nav-item">
+                    <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    <span data-i18n="nav-links">Полезные ссылки</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Баг-репорт -->
+                <a href="https://t.me/firesitesbugbot?start" target="_blank" rel="noopener noreferrer"
+                    class="bug-report-btn" aria-label="Сообщить о баге">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m8 2 1.88 1.88" />
+                        <path d="M14.12 3.88 16 2" />
+                        <path d="M9 7.13v-1a3 3 0 0 1 6 0v1" />
+                        <path d="M12 20c-4.42 0-8-2.69-8-6V9a4 4 0 0 1 8 0v11Z" />
+                        <path d="M12 9a4 4 0 0 0-8 0v5c0 3.31 3.58 6 8 6" />
+                        <path d="M6 11H3" />
+                        <path d="M6 15H2" />
+                        <path d="M18 11h3" />
+                        <path d="M18 15h2" />
+                        <path d="m19 19-2-1.5" />
+                        <path d="m5 19 2-1.5" />
+                    </svg>
+                    <span data-i18n="bug-report">Сообщить о баге</span>
+                </a>
+
+                <!-- Настройки -->
+                <button id="settings-toggle" class="settings-btn" aria-label="Настройки">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </button>
+
+                <!-- Скачать -->
+                <a href="/#download" class="btn btn-primary btn-nav download-btn">
+                    <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span data-i18n="download-btn">СКАЧАТЬ</span>
+                </a>
+
+                <!-- Бургер -->
+                <button class="hamburger" id="hamburger" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobile-menu">
+
+            <a href="./" class="mobile-nav-item">
+                <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                    <path d="M18 14h-8" />
+                    <path d="M15 18h-5" />
+                    <path d="M10 6h8v4h-8V6Z" />
+                </svg>
+                <span data-i18n="nav-news">Новости</span>
+            </a>
+            <a href="../links/" class="mobile-nav-item">
+                <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+                <span data-i18n="nav-links">Полезные ссылки</span>
+            </a>
+            <a href="/#download" class="mobile-nav-item btn-mobile-download">
+                <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span data-i18n="download-btn">СКАЧАТЬ</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <div class="page-header">
+                <div class="section-tag">FIRELINE</div>
+                <h1 data-i18n="page-title">НОВОСТИ</h1>
+            </div>
+
+            <div class="news-grid" id="news-grid">
+                <div class="news-loading">
+                    <div class="spinner"></div>
+                    <p>Загрузка новостей…</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../fireline.avif" alt="" class="logo-img-mini" onerror="this.style.display='none'">
+                <span>Fireline</span>
+            </div>
+            <p data-i18n="footer">© 2026 vertexgames. Все права защищены.</p>
+            <a href="https://t.me/fireline_2d" target="_blank" rel="noopener noreferrer"
+                class="footer-link">Telegram</a>
+        </div>
+    </footer>
+
+    <!-- Модальное окно настроек -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 data-i18n="settings-title">Настройки интерфейса</h2>
+                <button id="modal-close" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3 data-i18n="theme-title">Цветовая схема</h3>
+                    <div class="theme-selector">
+                        <button class="theme-opt" data-theme="dark" data-i18n="theme-dark">Тёмная</button>
+                        <button class="theme-opt" data-theme="black" data-i18n="theme-black">Чёрная</button>
+                        <button class="theme-opt" data-theme="light" data-i18n="theme-light">Светлая</button>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3 data-i18n="lang-title">Язык интерфейса</h3>
+                    <div class="lang-selector">
+                        <button class="lang-opt" data-lang="ru">Русский</button>
+                        <button class="lang-opt" data-lang="ua">Українська</button>
+                        <button class="lang-opt" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=3"></script>
+</body>
+
+</html>

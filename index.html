@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fireline — Боевая 2D авиация</title>
+    <meta name="description"
+        content="Fireline — захватывающая 2D игра про боевые самолеты. Воздушные бои, ракеты, огонь в небе. Скачивай бесплатно для Windows и Android.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Fireline",
+        "url": "https://fireline.dev",
+        "description": "Airplane strategy game for Android and Windows",
+        "genre": "Strategy",
+        "gamePlatform": ["Android", "Windows"]
+    }
+    </script>
+
+    <meta property="og:title" content="Fireline — Боевая 2D авиация">
+    <meta property="og:description"
+        content="Воздушные бои, ракеты, огонь в небе. Играй бесплатно на Windows и Android.">
+    <meta property="og:image" content="https://fireline.dev/fireline.avif">
+    <meta property="og:url" content="https://fireline.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fireline — Боевая 2D авиация">
+    <meta name="twitter:description"
+        content="Воздушные бои, ракеты, огонь в небе. Играй бесплатно на Windows и Android.">
+    <meta name="twitter:image" content="https://fireline.dev/fireline.avif">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="fireline.avif">
+    <link rel="apple-touch-icon" href="fireline.avif">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark">
+    <div class="bg-glow"></div>
+    <canvas id="radar-particles"></canvas>
+
+    <!-- Навигационная панель -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="fireline.avif" alt="Fireline logo" class="logo-img"
+                    onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23cc3c2e%22%3E%3Cpath%20d%3D%22M12%202L2%207l10%205%2010-5-10-5zM2%2017l10%205%2010-5M2%2012l10%205%2010-5%22%2F%3E%3C%2Fsvg%3E'">
+                <span data-i18n="logo">Fireline</span>
+            </div>
+
+            <!-- Десктопное меню -->
+            <nav class="nav-menu">
+
+                <a href="news/" class="nav-item">
+                    <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                        <path d="M18 14h-8" />
+                        <path d="M15 18h-5" />
+                        <path d="M10 6h8v4h-8V6Z" />
+                    </svg>
+                    <span data-i18n="nav-news">Новости</span>
+                </a>
+                <a href="links/" class="nav-item">
+                    <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    <span data-i18n="nav-links">Полезные ссылки</span>
+                </a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Баг-репорт -->
+                <a href="https://t.me/firesitesbugbot?start" target="_blank" rel="noopener noreferrer"
+                    class="bug-report-btn" aria-label="Сообщить о баге">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m8 2 1.88 1.88" />
+                        <path d="M14.12 3.88 16 2" />
+                        <path d="M9 7.13v-1a3 3 0 0 1 6 0v1" />
+                        <path d="M12 20c-4.42 0-8-2.69-8-6V9a4 4 0 0 1 8 0v11Z" />
+                        <path d="M12 9a4 4 0 0 0-8 0v5c0 3.31 3.58 6 8 6" />
+                        <path d="M6 11H3" />
+                        <path d="M6 15H2" />
+                        <path d="M18 11h3" />
+                        <path d="M18 15h2" />
+                        <path d="m19 19-2-1.5" />
+                        <path d="m5 19 2-1.5" />
+                    </svg>
+                    <span data-i18n="bug-report">Сообщить о баге</span>
+                </a>
+
+                <!-- Кнопка настроек (тема, язык) -->
+                <button id="settings-toggle" class="settings-btn" aria-label="Настройки">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </button>
+
+                <!-- Кнопка скачивания -->
+                <a href="#download" class="btn btn-primary btn-nav download-btn">
+                    <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span data-i18n="download-btn">СКАЧАТЬ</span>
+                </a>
+
+                <!-- МЕню -->
+                <button class="hamburger" id="hamburger" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Мобильное меню -->
+        <div class="mobile-menu" id="mobile-menu">
+
+            <a href="news/" class="mobile-nav-item">
+                <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                    <path d="M18 14h-8" />
+                    <path d="M15 18h-5" />
+                    <path d="M10 6h8v4h-8V6Z" />
+                </svg>
+                <span data-i18n="nav-news">Новости</span>
+            </a>
+            <a href="links/" class="mobile-nav-item">
+                <svg class="icon-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+                <span data-i18n="nav-links">Полезные ссылки</span>
+            </a>
+            <a href="#download" class="mobile-nav-item btn-mobile-download">
+                <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span data-i18n="download-btn">СКАЧАТЬ</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="app-icon-wrapper">
+                <img src="fireline.avif" alt="Fireline game icon" class="main-app-icon">
+            </div>
+            <div class="hero-badge-line">
+                <span class="badge-line"></span>
+                <span class="hero-badge" data-i18n="vertex">VERTEX INTERACTIVE</span>
+                <span class="badge-line"></span>
+            </div>
+            <h1 class="hero-title">Fireline</h1>
+            <p class="hero-subtitle" data-i18n="hero-subtitle">2d игра про боевые самолеты. Воздушные бои, ракеты, огонь
+                в небе. Скачивай игру для Windows или Android.</p>
+            <div class="hero-actions">
+                <a href="https://fireline-vertex.itch.io/fireline" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-hero-cta btn-hero-android">
+                    <svg class="icon-platform icon-android" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.52 2.14l1.41 1.41-2.51 2.51c1.88 1.34 3.19 3.42 3.51 5.84H4.07c.32-2.42 1.63-4.5 3.51-5.84L5.07 3.55l1.41-1.41 2.65 2.65C10.22 4.29 11.1 4.1 12 4.1s1.78.19 2.65.69l2.87-2.65zM7 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM4 14h16v5c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2v-5z" />
+                    </svg>
+                    <div class="btn-hero-text">
+                        <span class="btn-hero-main-label" data-i18n="hero-download-android">Скачать для Android</span>
+                        <span class="btn-hero-sub-label">.apk / itch.io</span>
+                    </div>
+                </a>
+
+                <a href="https://fireline-vertex.itch.io/fireline" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-hero-cta btn-hero-windows">
+                    <svg class="icon-platform icon-windows" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.901-1.8" />
+                    </svg>
+                    <div class="btn-hero-text">
+                        <span class="btn-hero-main-label" data-i18n="hero-download-windows">Скачать для Windows</span>
+                        <span class="btn-hero-sub-label">.zip / itch.io</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Подпись с версией и размером -->
+            <div class="hero-meta-badge">
+                <span class="hero-meta-dot"></span>
+                <span class="hero-meta-text" data-i18n="hero-version-info">v1.13 • 250 MB • Бесплатно • Без
+                    рекламы</span>
+            </div>
+
+            <div class="scroll-hint" data-i18n="scroll-hint">ПРОКРУТИ ВНИЗ</div>
+        </section>
+
+        <!-- Showcase (Трейлер и скриншоты) -->
+        <section class="showcase" id="showcase">
+            <div class="section-tag-centered" data-i18n="showcase-tag">Геймплей</div>
+            <h2 class="section-main-title" data-i18n="showcase-title">Эпичные сражения</h2>
+            <p class="showcase-subtitle" data-i18n="showcase-subtitle">Ощути динамику настоящих воздушных дуэлей,
+                тактических манёвров и мощных ракетных атак.</p>
+
+            <div class="showcase-layout">
+                <!-- Трейлер / Видео геймплея -->
+                <div class="showcase-video-card">
+                    <div class="hud-corner hud-tl"></div>
+                    <div class="hud-corner hud-tr"></div>
+                    <div class="hud-corner hud-bl"></div>
+                    <div class="hud-corner hud-br"></div>
+                    <div class="showcase-video-header">
+                        <div class="video-status">
+                            <span class="live-dot"></span>
+                            <span data-i18n="showcase-video-title">Трейлер</span>
+                        </div>
+                        <div class="video-badge" data-i18n="showcase-video-badge">Game previev</div>
+                    </div>
+                    <div class="video-container">
+                        <iframe id="gameplay-video" class="gameplay-video"
+                            src="https://www.youtube-nocookie.com/embed/EQQZCnR4nm4?rel=0"
+                            title="Fireline — Official Trailer"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Карусель скриншотов -->
+                <div class="showcase-carousel-wrapper">
+                    <div class="carousel-header">
+                        <div class="carousel-title-group">
+                            <h3 class="carousel-title" data-i18n="showcase-screenshots-title">Скриншоты</h3>
+                            <span class="carousel-hint" data-i18n="carousel-hint">Нажмите на изображение для
+                                увеличения</span>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn carousel-prev" id="carousel-prev"
+                                aria-label="Предыдущий скриншот">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="carousel-btn carousel-next" id="carousel-next"
+                                aria-label="Следующий скриншот">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="carousel-container" id="screenshot-carousel">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Слайд 1 -->
+                            <div class="carousel-slide" data-index="0" data-caption-key="screenshot-1-caption">
+                                <div class="slide-card">
+                                    <div class="slide-hud-marker">1 - Воздушный Бой</div>
+                                    <img src="screenshot-1.png" alt="Воздушный Бой" class="slide-img" loading="lazy">
+                                    <div class="slide-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                        </svg>
+                                        <span data-i18n="screenshot-1-caption">Воздушный Бой</span>
+                                    </div>
+                                    <div class="slide-overlay">
+                                        <div class="slide-badge">Fight</div>
+                                        <div class="slide-caption" data-i18n="screenshot-1-caption">Воздушный Бой
+                                        </div>
+                                    </div>
+                                    <div class="slide-zoom-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Слайд 2 -->
+                            <div class="carousel-slide" data-index="1" data-caption-key="screenshot-2-caption">
+                                <div class="slide-card">
+                                    <div class="slide-hud-marker">02 - Ангар</div>
+                                    <img src="screenshot-2.png" alt="Ангар и кастомизация техники" class="slide-img"
+                                        loading="lazy">
+                                    <div class="slide-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                                            <path d="m9 9 6 6m0-6-6 6" />
+                                        </svg>
+                                        <span data-i18n="screenshot-2-caption">Ангар и кастомизация техники</span>
+                                    </div>
+                                    <div class="slide-overlay">
+                                        <div class="slide-badge">Hangar</div>
+                                        <div class="slide-caption" data-i18n="screenshot-2-caption">Ангар и кастомизация
+                                            техники</div>
+                                    </div>
+                                    <div class="slide-zoom-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Слайд 3 -->
+                            <div class="carousel-slide" data-index="2" data-caption-key="screenshot-3-caption">
+                                <div class="slide-card">
+                                    <div class="slide-hud-marker">03 - Мультиплеер</div>
+                                    <img src="screenshot-3.png" alt="Мультиплеер" class="slide-img" loading="lazy">
+                                    <div class="slide-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <polygon
+                                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                            </polygon>
+                                        </svg>
+                                        <span data-i18n="screenshot-3-caption">Мультиплеер</span>
+                                    </div>
+                                    <div class="slide-overlay">
+                                        <div class="slide-badge">multiplayer</div>
+                                        <div class="slide-caption" data-i18n="screenshot-3-caption">Мультиплеер</div>
+                                    </div>
+                                    <div class="slide-zoom-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Слайд 4 -->
+                            <div class="carousel-slide" data-index="3" data-caption-key="screenshot-4-caption">
+                                <div class="slide-card">
+                                    <div class="slide-hud-marker">04 - Бой против ЗРК</div>
+                                    <img src="screenshot-4.png" alt="Бой против ЗРК" class="slide-img" loading="lazy">
+                                    <div class="slide-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path
+                                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                            </path>
+                                        </svg>
+                                        <span data-i18n="screenshot-4-caption">Бой против ЗРК</span>
+                                    </div>
+                                    <div class="slide-overlay">
+                                        <div class="slide-badge">Battle vs SAM</div>
+                                        <div class="slide-caption" data-i18n="screenshot-4-caption">Бой против ЗРК</div>
+                                    </div>
+                                    <div class="slide-zoom-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Индикаторы (dots) -->
+                    <div class="carousel-dots" id="carousel-dots">
+                        <button class="dot active" data-index="0" aria-label="Скриншот 1"></button>
+                        <button class="dot" data-index="1" aria-label="Скриншот 2"></button>
+                        <button class="dot" data-index="2" aria-label="Скриншот 3"></button>
+                        <button class="dot" data-index="3" aria-label="Скриншот 4"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Модальное окно просмотра скриншотов (Lightbox) -->
+        <div id="lightbox-modal" class="lightbox-overlay" aria-hidden="true">
+            <div class="lightbox-container">
+                <button id="lightbox-close" class="lightbox-close-btn" aria-label="Закрыть">&times;</button>
+                <div class="lightbox-media-wrapper">
+                    <img id="lightbox-img" src="" alt="" class="lightbox-img">
+                    <div id="lightbox-placeholder" class="lightbox-placeholder" style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="lightbox-footer">
+                    <div class="lightbox-caption" id="lightbox-caption"></div>
+                    <div class="lightbox-counter" id="lightbox-counter">1 / 4</div>
+                </div>
+                <button id="lightbox-prev" class="lightbox-nav-btn lightbox-nav-prev" aria-label="Предыдущий">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button id="lightbox-next" class="lightbox-nav-btn lightbox-nav-next" aria-label="Следующий">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Геймплей (Features) -->
+        <section class="features">
+            <div class="section-tag-centered" data-i18n="gameplay-tag">ГЕЙМПЛЕЙ</div>
+            <h2 class="section-main-title" data-i18n="about-game">О ИГРЕ</h2>
+            <div class="features-grid">
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feature-1-title">АВИАЦИЯ</h3>
+                    <p data-i18n="feature-1-desc">Управляй истребителями в воздушных схватках. Ракеты, манёвры, огонь в
+                        небе.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="2" y1="2" x2="22" y2="22" />
+                            <path d="M8.5 16.5a5 5 0 0 1 7 0" />
+                            <path d="M2 8.82a15 15 0 0 1 4.17-2.65" />
+                            <path d="M10.66 5c4.01-.36 8.14.9 11.34 3.82" />
+                            <path d="M16.85 11.25a10 10 0 0 1 2.22 1.68" />
+                            <path d="M5 13a10 10 0 0 1 5.24-2.76" />
+                            <line x1="12" y1="20" x2="12.01" y2="20" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feature-2-title">БЕЗ ИНТЕРНЕТА</h3>
+                    <p data-i18n="feature-2-desc">Полный офлайн-режим. Метро, дорога, где угодно — без WiFi.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8" />
+                            <path d="M10 19v-3.96 3.15" />
+                            <path d="M7 19h5" />
+                            <rect width="6" height="10" x="16" y="12" rx="2" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feature-3-title">Android + Windows</h3>
+                    <p data-i18n="feature-3-desc">Оптимизировано под Android + Windows. Плавный геймплей даже на
+                        бюджетных устройствах.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feature-4-title">ПОЛНОСТЬЮ БЕСПЛАТНО</h3>
+                    <p data-i18n="feature-4-desc">Без подписок, без доната, без рекламы. Просто скачай и играй.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сообщество (Social Proof) -->
+        <section class="community">
+            <div class="section-tag-centered" data-i18n="community-tag">НАШЕ СООБЩЕСТВО</div>
+            <div class="counter-container">
+                <span id="sub-counter" class="counter-number">5 322</span>
+                <span class="counter-label" data-i18n="subscribers-label">ПОДПИСЧИКОВ В TELEGRAM</span>
+            </div>
+            <p class="community-subtitle" data-i18n="community-subtitle">Присоединяйся к нашему штабу. Там публикуются
+                свежие тестовые сборки, патчноуты и идет живое обсуждение проекта.</p>
+            <div class="community-action-wrapper">
+                <a href="https://t.me/fireline_2d" target="_blank" rel="noopener noreferrer" class="btn-link-tg">
+                    <svg class="icon-tg-inline" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+                    </svg>
+                    <span data-i18n="open-channel">ОТКРЫТЬ КАНАЛ →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Финальный блок CTA -->
+        <section class="cta-block" id="download">
+            <div class="app-icon-wrapper-mini"><img src="fireline.avif" alt="" class="main-app-icon-mini">
+            </div>
+            <h2 class="cta-title" data-i18n="cta-title">ГОТОВ В БОЙ?</h2>
+            <p class="cta-desc" data-i18n="cta-desc">Нажми на кнопку ниже, чтобы перейти на платформу загрузки и
+                установить актуальную версию игры.</p>
+            <div class="hero-actions">
+                <a href="https://fireline-vertex.itch.io/fireline" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-hero-cta btn-hero-android">
+                    <svg class="icon-platform icon-android" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.52 2.14l1.41 1.41-2.51 2.51c1.88 1.34 3.19 3.42 3.51 5.84H4.07c.32-2.42 1.63-4.5 3.51-5.84L5.07 3.55l1.41-1.41 2.65 2.65C10.22 4.29 11.1 4.1 12 4.1s1.78.19 2.65.69l2.87-2.65zM7 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM4 14h16v5c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2v-5z" />
+                    </svg>
+                    <div class="btn-hero-text">
+                        <span class="btn-hero-main-label" data-i18n="hero-download-android">Скачать для Android</span>
+                        <span class="btn-hero-sub-label">.apk / itch.io</span>
+                    </div>
+                </a>
+
+                <a href="https://fireline-vertex.itch.io/fireline" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-hero-cta btn-hero-windows">
+                    <svg class="icon-platform icon-windows" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.901-1.8" />
+                    </svg>
+                    <div class="btn-hero-text">
+                        <span class="btn-hero-main-label" data-i18n="hero-download-windows">Скачать для Windows</span>
+                        <span class="btn-hero-sub-label">.zip / itch.io</span>
+                    </div>
+                </a>
+            </div>
+            <div class="cta-footer-notes" data-i18n="cta-notes">Бесплатно • Android + Windows • Без рекламы</div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo"><img src="fireline.avif" alt="" class="logo-img-mini"
+                    onerror="this.style.display='none'"><span>Fireline</span></div>
+            <p data-i18n="footer">© 2026 firelinefan. Все права защищены.</p>
+            <a href="https://t.me/fireline_2d" target="_blank" rel="noopener noreferrer"
+                class="footer-link">Telegram</a>
+        </div>
+    </footer>
+
+    <!-- Модальное окно настроек -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 data-i18n="settings-title">Настройки интерфейса</h2>
+                <button id="modal-close" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3 data-i18n="theme-title">Цветовая схема</h3>
+                    <div class="theme-selector">
+                        <button class="theme-opt" data-theme="dark" data-i18n="theme-dark">Тёмная</button>
+                        <button class="theme-opt" data-theme="black" data-i18n="theme-black">Чёрная</button>
+                        <button class="theme-opt" data-theme="light" data-i18n="theme-light">Светлая</button>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h3 data-i18n="lang-title">Язык интерфейса</h3>
+                    <div class="lang-selector">
+                        <button class="lang-opt" data-lang="ru">Русский</button>
+                        <button class="lang-opt" data-lang="ua">Українська</button>
+                        <button class="lang-opt" data-lang="en">English</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
