@@ -43,19 +43,5 @@
     "content": "Как всегда ПК версия игры для ПК выходит позже чем для телефонов. Это связанно с некоторыми багами, мезаниками и так далее. Обновление уже вышло, вы можете скачать его тут - https://fireline.dev/download",
     "content_en": "As usual, the PC version of the game releases later than the mobile version. This is due to certain bugs, mechanics, and other issues. The update is already live — you can download it here: https://fireline.dev/download",
     "content_ua": "Як завжди, ПК версія гри виходить пізніше, ніж для телефонів. Це пов'язано з деякими багами, механіками тощо. Оновлення вже вийшло — ви можете завантажити його тут: https://fireline.dev/download"
-  },
-  {
-    "slug": "test1",
-    "published": true,
-    "published_at": "2026-10-16",
-    "title": "test1",
-    "title_en": "test1",
-    "title_ua": "test1",
-    "description": "test",
-    "description_en": "test",
-    "description_ua": "test",
-    "content": "test",
-    "content_en": "test",
-    "content_ua": "test"
   }
 ]
