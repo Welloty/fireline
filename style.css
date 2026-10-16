@@ -69,18 +69,6 @@ body.theme-light .btn-hero-windows:hover {
     border-color: var(--accent-red);
 }
 
-body.theme-light .hero-meta-badge {
-    background: #ffffff;
-    border-color: #cbd5e1;
-    color: #1e293b;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-body.theme-light .hero-meta-dot {
-    background: #16a34a;
-    box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
-}
-
 body.theme-light .section-tag-centered {
     color: #475569;
 }
@@ -566,29 +554,6 @@ h1, h2, h3, h4, h5, h6,
     opacity: 0.75;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-}
-
-.hero-meta-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-gray);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 40px;
-    backdrop-filter: blur(8px);
-}
-
-.hero-meta-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #3ddc84;
-    box-shadow: 0 0 8px rgba(61, 220, 132, 0.6);
 }
 
 .scroll-hint {
@@ -1762,13 +1727,6 @@ body.theme-light .lang-opt {
         width: 100%;
         justify-content: center;
         min-width: 0;
-    }
-
-    .hero-meta-badge {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 30px;
     }
 
     .showcase {

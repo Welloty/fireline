@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "bug-report": "Сообщить о баге", "download-btn": "СКАЧАТЬ", "hero-subtitle": "2d игра про боевые самолеты. Воздушные бои, ракеты, огонь в небе. Скачивай игру для Windows или Android.",
             "hero-download": "ПЕРЕЙТИ К СКАЧИВАНИЮ", "android-windows": "Android + Windows", "scroll-hint": "ПРОКРУТИ ВНИЗ",
             "hero-download-android": "Скачать для Android", "hero-download-windows": "Скачать для Windows",
-            "hero-version-info": "v1.13 • 250 MB • Бесплатно • Без рекламы",
+            "hero-download-launcher": "Скачать лаунчер для Windows",
             "showcase-tag": "МЕДИА И ГЕЙМПЛЕЙ", "showcase-title": "В ЭПИЦЕНТРЕ СРАЖЕНИЙ",
             "showcase-subtitle": "Ощути динамику настоящих воздушных дуэлей, тактических манёвров и мощных ракетных атак.",
             "showcase-video-title": "Трейлер", "showcase-video-badge": "Показ игры",
@@ -25,16 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "feature-4-title": "ПОЛНОСТЬЮ БЕСПЛАТНО", "feature-4-desc": "Без подписок, без доната, без рекламы. Просто скачай и играй.",
             "cta-title": "ГОТОВ В БОЙ?", "cta-desc": "Нажми на кнопку ниже, чтобы перейти на платформу загрузки и установить актуальную версию игры.",
             "cta-button": "СКАЧАТЬ ИГРУ", "cta-notes": "Бесплатно • Android + Windows • Без рекламы",
-            "footer": "© 2026 firelinefan. Все права защищены.", "settings-title": "Настройки интерфейса",
+            "footer": "© 2026 firelinefan.", "developer-credit": "Разработчик игры — Vertex Games.", "settings-title": "Настройки интерфейса",
             "theme-title": "Цветовая схема", "theme-dark": "Тёмная", "theme-black": "Чёрная", "theme-light": "Светлая",
-            "lang-title": "Язык интерфейса", vertex: "VERTEX INTERACTIVE"
+            "lang-title": "Язык интерфейса", vertex: "VERTEX GAMES"
         },
         ua: {
             logo: "Fireline", "nav-changelog": "Ченжлог", "nav-links": "Корисні посилання", "nav-news": "Новини",
             "bug-report": "Повідомити про баг", "download-btn": "ЗАВАНТАЖИТИ", "hero-subtitle": "2d гра про бойові літаки. Повітряні бої, ракети, вогонь у небі. Завантажуй гру для Windows або Android.",
             "hero-download": "ПЕРЕЙТИ ДО ЗАВАНТАЖЕННЯ", "android-windows": "Android + Windows", "scroll-hint": "ПРОКРУТИ ВНИЗ",
             "hero-download-android": "Завантажити для Android", "hero-download-windows": "Завантажити для Windows",
-            "hero-version-info": "v1.13 • 250 MB • Безкоштовно • Без реклами",
+            "hero-download-launcher": "Завантажити лаунчер для Windows",
             "showcase-tag": "МЕДІА ТА ГЕЙМПЛЕЙ", "showcase-title": "В ЕПІЦЕНТРІ БИТВ",
             "showcase-subtitle": "Відчуй динаміку справжніх повітряних дуелей, тактичних маневрів та потужних ракетних атак.",
             "showcase-video-title": "Трейлер", "showcase-video-badge": "Показ гри",
@@ -53,19 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
             "feature-4-title": "ПОВНІСТЮ БЕЗКОШТОВНО", "feature-4-desc": "Без підписок, без донату, без реклами. Просто завантаж і грай.",
             "cta-title": "ГОТОВИЙ ДО БОЮ?", "cta-desc": "Натисни кнопку нижче, щоб перейти на платформу завантаження та встановити актуальну версію гри.",
             "cta-button": "ЗАВАНТАЖИТИ ГРУ", "cta-notes": "Безкоштовно • Android + Windows • Без реклами",
-            "footer": "© 2026 firelinefan. Усі права захищені.", "settings-title": "Налаштування інтерфейсу",
+            "footer": "© 2026 firelinefan.", "developer-credit": "Розробник гри — Vertex Games.", "settings-title": "Налаштування інтерфейсу",
             "theme-title": "Кольорова схема", "theme-dark": "Темна", "theme-black": "Чорна", "theme-light": "Світла",
-            "lang-title": "Мова інтерфейсу", vertex: "VERTEX INTERACTIVE"
+            "lang-title": "Мова інтерфейсу", vertex: "VERTEX GAMES"
         },
         en: {
             logo: "Fireline", "nav-changelog": "Changelog", "nav-links": "Useful links", "nav-news": "News",
             "bug-report": "Report a bug", "download-btn": "DOWNLOAD", "hero-subtitle": "2D combat aircraft game. Air battles, missiles, fire in the sky. Download the game for Windows or Android.",
             "hero-download": "GO TO DOWNLOAD", "android-windows": "Android + Windows", "scroll-hint": "SCROLL DOWN",
             "hero-download-android": "Download for Android", "hero-download-windows": "Download for Windows",
-            "hero-version-info": "v1.13 • 250 MB • Free • No ads",
+            "hero-download-launcher": "Download Windows launcher",
             "showcase-tag": "MEDIA & GAMEPLAY", "showcase-title": "IN THE HEART OF BATTLE",
             "showcase-subtitle": "Experience the dynamics of authentic dogfights, tactical maneuvers, and heavy missile strikes.",
-            "showcase-video-title": "Trailer", "showcase-video-badge": "Ggame showcase",
+            "showcase-video-title": "Trailer", "showcase-video-badge": "Gameplay showcase",
             "video-ready-title": "Fireline Gameplay", "video-ready-desc": "Video file trailer.mp4 will be played here",
             "showcase-screenshots-title": "Screenshots", "carousel-hint": "Click on image to view",
             "screenshot-1-caption": "Fight",
@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "feature-4-title": "COMPLETELY FREE", "feature-4-desc": "No subscriptions, no donations, no ads. Just download and play.",
             "cta-title": "READY FOR BATTLE?", "cta-desc": "Click the button below to go to the download platform and install the latest version.",
             "cta-button": "DOWNLOAD GAME", "cta-notes": "Free • Android + Windows • No ads",
-            "footer": "© 2026 firelinefan. All rights reserved.", "settings-title": "Interface Settings",
+            "footer": "© 2026 firelinefan.", "developer-credit": "Game developer: Vertex Games.", "settings-title": "Interface Settings",
             "theme-title": "Color scheme", "theme-dark": "Dark", "theme-black": "Black", "theme-light": "Light",
-            "lang-title": "Interface Language", vertex: "VERTEX INTERACTIVE"
+            "lang-title": "Interface Language", vertex: "VERTEX GAMES"
         }
     };
 

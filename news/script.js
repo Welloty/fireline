@@ -14,6 +14,7 @@ const TRANSLATIONS = {
         "lang-title": "Язык интерфейса",
         "download-btn": "СКАЧАТЬ",
         "page-title": "НОВОСТИ",
+        "loading-news": "Загрузка новостей…",
         "read-more": "Читать →",
         "back-to-list": "Все новости",
         "not-found-title": "Новость не найдена",
@@ -22,7 +23,8 @@ const TRANSLATIONS = {
         "error-title": "Ошибка загрузки",
         "error-desc": "Не удалось загрузить данные. Попробуйте позже.",
         "no-news": "Новостей пока нет. Следите за обновлениями!",
-        "footer": "© 2026 vertexgames. Все права защищены."
+        "footer": "© 2026 firelinefan.",
+        "developer-credit": "Разработчик игры — Vertex Games."
     },
     ua: {
         "bug-report": "Повідомити про баг",
@@ -37,6 +39,7 @@ const TRANSLATIONS = {
         "lang-title": "Мова інтерфейсу",
         "download-btn": "ЗАВАНТАЖИТИ",
         "page-title": "НОВИНИ",
+        "loading-news": "Завантаження новин…",
         "read-more": "Читати →",
         "back-to-list": "Всі новини",
         "not-found-title": "Новину не знайдено",
@@ -45,7 +48,8 @@ const TRANSLATIONS = {
         "error-title": "Помилка завантаження",
         "error-desc": "Не вдалося завантажити дані. Спробуйте пізніше.",
         "no-news": "Новин поки немає. Слідкуйте за оновленнями!",
-        "footer": "© 2026 vertexgames. Усі права захищені."
+        "footer": "© 2026 firelinefan.",
+        "developer-credit": "Розробник гри — Vertex Games."
     },
     en: {
         "bug-report": "Report a Bug",
@@ -60,6 +64,7 @@ const TRANSLATIONS = {
         "lang-title": "Interface Language",
         "download-btn": "DOWNLOAD",
         "page-title": "NEWS",
+        "loading-news": "Loading news…",
         "read-more": "Read More →",
         "back-to-list": "All news",
         "not-found-title": "News not found",
@@ -68,7 +73,8 @@ const TRANSLATIONS = {
         "error-title": "Loading error",
         "error-desc": "Failed to load data. Please try again later.",
         "no-news": "No news yet. Stay tuned!",
-        "footer": "© 2026 vertexgames. All rights reserved."
+        "footer": "© 2026 firelinefan.",
+        "developer-credit": "Game developer: Vertex Games."
     }
 };
 
@@ -96,8 +102,11 @@ function renderList(news) {
 
     const lang = localStorage.getItem('fireline-lang') || 'ru';
     const dict = TRANSLATIONS[lang] || TRANSLATIONS['ru'];
+    const visibleNews = (news || [])
+        .filter(item => item.published !== false)
+        .sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''));
 
-    if (!news || news.length === 0) {
+    if (visibleNews.length === 0) {
         const noNewsText = dict['no-news'] || 'Новостей пока нет. Следите за обновлениями!';
         grid.innerHTML = `<div class="news-empty">
             <p>${escHtml(noNewsText)}</p>
@@ -107,10 +116,10 @@ function renderList(news) {
 
     const readMoreText = dict['read-more'] || 'Читать →';
 
-    news.forEach(item => {
+    visibleNews.forEach(item => {
         const title = item[`title_${lang}`] || item.title;
         const description = item[`description_${lang}`] || item.description;
-        const date = item[`date_${lang}`] || item.date;
+        const date = formatNewsDate(item.published_at, lang);
 
         const card = document.createElement('a');
         card.className = 'news-card';
@@ -176,7 +185,7 @@ function renderArticle(item) {
     const lang = localStorage.getItem('fireline-lang') || 'ru';
 
     const title = item[`title_${lang}`] || item.title;
-    const date = item[`date_${lang}`] || item.date;
+    const date = formatNewsDate(item.published_at, lang);
     const content = item[`content_${lang}`] || item.content;
 
     // Обновление мета заголовков вкладки
@@ -285,7 +294,7 @@ function initArticlePage() {
     loadNews()
         .then(news => {
             const item = news.find(n => n.slug === slug);
-            if (item) {
+            if (item && item.published !== false) {
                 renderArticle(item);
             } else {
                 renderNotFound(slug);
@@ -340,6 +349,20 @@ function formatContent(text) {
         .split(/\n\n+/)
         .map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`)
         .join('');
+}
+
+/** Форматирует единую дату публикации на языке интерфейса. */
+function formatNewsDate(value, lang) {
+    if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return '';
+    const [year, month, day] = value.split('-').map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day, 12));
+    const locale = lang === 'en' ? 'en-US' : lang === 'ua' ? 'uk-UA' : 'ru-RU';
+    return new Intl.DateTimeFormat(locale, {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC'
+    }).format(date);
 }
 
 /** SVG-плейсхолдер для отсутствующих изображений */

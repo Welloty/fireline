@@ -1,0 +1,79 @@
+media:
+  - name: news-images
+    label: Обложки новостей
+    input: news/data
+    output: data
+    extensions: [avif, jpg, jpeg, png, webp]
+    categories: [image]
+    rename: safe
+
+content:
+  - name: news
+    label: Новости
+    type: file
+    path: news/data/list.json
+    format: json
+    list: true
+    fields:
+      - name: slug
+        label: Адрес новости (slug)
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          message: Используй латинские буквы, цифры, точки и дефисы.
+      - name: published
+        label: Показывать на сайте
+        type: boolean
+        default: true
+      - name: published_at
+        label: Дата публикации
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: title
+        label: Заголовок (русский)
+        type: string
+        required: true
+      - name: title_en
+        label: Заголовок (английский)
+        type: string
+      - name: title_ua
+        label: Заголовок (украинский)
+        type: string
+      - name: description
+        label: Краткое описание (русский)
+        type: text
+      - name: description_en
+        label: Краткое описание (английский)
+        type: text
+      - name: description_ua
+        label: Краткое описание (украинский)
+        type: text
+      - name: image
+        label: Обложка
+        type: image
+        options:
+          media: news-images
+          extensions: [avif, jpg, jpeg, png, webp]
+      - name: content
+        label: Текст статьи (русский)
+        type: text
+        required: true
+      - name: content_en
+        label: Текст статьи (английский)
+        type: text
+      - name: content_ua
+        label: Текст статьи (украинский)
+        type: text
+
+settings:
+  content:
+    merge: true
+  commit:
+    templates:
+      create: "news: добавить {path}"
+      update: "news: обновить {path}"
+      delete: "news: удалить {path}"
+      rename: "news: переименовать {oldPath} → {newPath}"
